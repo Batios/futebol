@@ -13,6 +13,11 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ui-lightness/jquery-ui-1.8.15.custom.css" />
+
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-ui-1.8.15.custom.min.js"></script>
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.ui.datepicker-pt-BR.js"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -38,7 +43,10 @@
                                 array('label'=>'Time', 'url'=>array('/times'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Colete', 'url'=>array('/coletes'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Jogador Time', 'url'=>array('/jogadorTime'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Tipo Jogador', 'url'=>array('/tipoJogador'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Posições', 'url'=>array('/posicoes'), 'visible'=>!Yii::app()->user->isGuest),
                                 array('label'=>'Gols', 'url'=>array('/gols'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Times Brasileiros', 'url'=>array('/timesBrasileiros'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>

@@ -40,14 +40,32 @@ class Pessoas extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('pes_nome', 'required'),
 			array('pes_nome', 'length', 'max'=>100),
 			array('pes_apelido', 'length', 'max'=>20),
-			array('pes_data_nascimento, pes_data_cadastro', 'safe'),
+			array('pes_data_nascimento', 'safe'),			
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('pes_id, pes_nome, pes_apelido, pes_data_nascimento, pes_data_cadastro', 'safe', 'on'=>'search'),
 		);
 	}
+
+        public function beforeSave(){
+            parent::beforeSave();
+            
+            if($this->isNewRecord){
+                $this->pes_data_cadastro = new CDbExpression('NOW()');
+            }
+            
+            return $this;
+        }
+
+        public function  afterFind() {
+            parent::afterFind();
+            $date = new CDateFormatter('pt_br');
+            $this->pes_data_nascimento =  $date->format('dd/MM/yyyy',$this->pes_data_nascimento);
+            $this->pes_data_cadastro =  $date->format('dd/MM/yyyy - HH:mm:s',$this->pes_data_cadastro);
+        }
 
 	/**
 	 * @return array relational rules.
@@ -67,11 +85,11 @@ class Pessoas extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pes_id' => 'Pes',
-			'pes_nome' => 'Pes Nome',
-			'pes_apelido' => 'Pes Apelido',
-			'pes_data_nascimento' => 'Pes Data Nascimento',
-			'pes_data_cadastro' => 'Pes Data Cadastro',
+			'pes_id' => 'Id Pessoa',
+			'pes_nome' => 'Nome',
+			'pes_apelido' => 'Apelido',
+			'pes_data_nascimento' => 'Data Nascimento',
+			'pes_data_cadastro' => 'Data Cadastro',
 		);
 	}
 

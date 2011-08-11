@@ -27,12 +27,6 @@
 		<?php echo $form->error($model,'pes_data_nascimento'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'pes_data_cadastro'); ?>
-		<?php echo $form->textField($model,'pes_data_cadastro'); ?>
-		<?php echo $form->error($model,'pes_data_cadastro'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
@@ -40,3 +34,18 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+
+	$(function() {
+        
+            $.datepicker.setDefaults($.datepicker.regional[ "pt-BR" ])
+
+            $( "#Pessoas_pes_data_nascimento" ).datepicker({
+                    showOn: "button",
+                    buttonImage: "images/calendar.gif",
+                    buttonImageOnly: true
+            });
+	});
+
+</script>

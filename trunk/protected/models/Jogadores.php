@@ -5,16 +5,24 @@
  *
  * The followings are the available columns in table 'jogadores':
  * @property integer $jog_id
- * @property integer $jog_tipo
  * @property string $jog_nome_colete
  * @property integer $tim_bra_id
+ * @property boolean $jog_linha
+ * @property boolean $jog_gol
+ * @property integer $tip_jog_id
+ * @property integer $pos_id
  *
  * The followings are the available model relations:
- * @property Pessoas $jog
  * @property JogadorTime[] $jogadorTimes
+ * @property Pessoas $jog
+ * @property TipoJogador $tipJog
+ * @property Posicoes $pos
+ * @property TimesBrasileiros $timBra
  */
 class Jogadores extends CActiveRecord
 {
+    private $jog_linha_descricao;
+    private $jog_gol_descricao;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Jogadores the static model class
@@ -41,13 +49,23 @@ class Jogadores extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('jog_id', 'required'),
-			array('jog_id, jog_tipo, tim_bra_id', 'numerical', 'integerOnly'=>true),
+			array('jog_id', 'unique'),
+			array('jog_id, tim_bra_id, tip_jog_id, pos_id', 'numerical', 'integerOnly'=>true),
 			array('jog_nome_colete', 'length', 'max'=>30),
+			array('jog_linha, jog_gol', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('jog_id, jog_tipo, jog_nome_colete, tim_bra_id', 'safe', 'on'=>'search'),
+			array('jog_id, jog_nome_colete, tim_bra_id, jog_linha, jog_gol, tip_jog_id, pos_id', 'safe', 'on'=>'search'),
 		);
 	}
+
+
+        public function  afterFind() {
+            parent::afterFind();
+            $this->jog_linha_descricao = $this->jog_linha==true ? 'Sim' : 'Não';
+            $this->jog_gol_descricao = $this->jog_gol==true ? 'Sim' : 'Não';
+        }
+
 
 	/**
 	 * @return array relational rules.
@@ -57,8 +75,11 @@ class Jogadores extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'jog' => array(self::BELONGS_TO, 'Pessoas', 'jog_id'),
 			'jogadorTimes' => array(self::HAS_MANY, 'JogadorTime', 'jog_id'),
+			'jog' => array(self::BELONGS_TO, 'Pessoas', 'jog_id'),
+			'tipJog' => array(self::BELONGS_TO, 'TipoJogador', 'tip_jog_id'),
+			'pos' => array(self::BELONGS_TO, 'Posicoes', 'pos_id'),
+			'timBra' => array(self::BELONGS_TO, 'TimesBrasileiros', 'tim_bra_id'),
 		);
 	}
 
@@ -69,9 +90,12 @@ class Jogadores extends CActiveRecord
 	{
 		return array(
 			'jog_id' => 'Jog',
-			'jog_tipo' => 'Jog Tipo',
 			'jog_nome_colete' => 'Jog Nome Colete',
 			'tim_bra_id' => 'Tim Bra',
+			'jog_linha' => 'Jog Linha',
+			'jog_gol' => 'Jog Gol',
+			'tip_jog_id' => 'Tip Jog',
+			'pos_id' => 'Pos',
 		);
 	}
 
@@ -87,12 +111,34 @@ class Jogadores extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('jog_id',$this->jog_id);
-		$criteria->compare('jog_tipo',$this->jog_tipo);
 		$criteria->compare('jog_nome_colete',$this->jog_nome_colete,true);
 		$criteria->compare('tim_bra_id',$this->tim_bra_id);
+		$criteria->compare('jog_linha',$this->jog_linha);
+		$criteria->compare('jog_gol',$this->jog_gol);
+		$criteria->compare('tip_jog_id',$this->tip_jog_id);
+		$criteria->compare('pos_id',$this->pos_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+
+        public function getJog_linha_descricao() {
+            return $this->jog_linha_descricao;
+        }
+
+        public function setJog_linha_descricao($jog_linha_descricao) {
+            $this->jog_linha_descricao = $jog_linha_descricao;
+        }
+
+        public function getJog_gol_descricao() {
+            return $this->jog_gol_descricao;
+        }
+
+        public function setJog_gol_descricao($jog_gol_descricao) {
+            $this->jog_gol_descricao = $jog_gol_descricao;
+        }
+
+
+
 }
