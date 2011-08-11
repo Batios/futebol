@@ -62,8 +62,8 @@ class TipoJogador extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'tip_jog_id' => 'Tip Jog',
-			'tip_jog_descricao' => 'Tip Jog Descricao',
+			'tip_jog_id' => 'Id Tipo Jogador',
+			'tip_jog_descricao' => 'Tipo de Jogador',
 		);
 	}
 

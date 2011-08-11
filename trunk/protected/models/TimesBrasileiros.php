@@ -64,9 +64,9 @@ class TimesBrasileiros extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'tim_bra_id' => 'Tim Bra',
-			'tim_bra_nome' => 'Tim Bra Nome',
-			'tim_bra_sigla' => 'Tim Bra Sigla',
+			'tim_bra_id' => 'Id Time',
+			'tim_bra_nome' => 'Time',
+			'tim_bra_sigla' => 'Sigla',
 		);
 	}
 
