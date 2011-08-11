@@ -19,7 +19,7 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'jog_tim_id',
-		'jog_id',
-		'tim_id',
+		'jog.nome_jogador',
+		'tim.descricao_time',
 	),
 )); ?>

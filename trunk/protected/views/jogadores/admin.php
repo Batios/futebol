@@ -42,7 +42,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'jog.pes_nome',
+		'nome_jogador',
 		'jog_nome_colete',
 		'timBra.tim_bra_nome',
 		'jog_linha_descricao',

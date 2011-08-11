@@ -93,7 +93,7 @@ class PartidasController extends Controller
 		if(isset($_POST['Partidas']))
 		{
 			$model->attributes=$_POST['Partidas'];
-			if($model->save())
+			if($model->save(true, array('par_id', 'par_data_partida', 'par_descricao', 'par_data_alteracao')))
 				$this->redirect(array('view','id'=>$model->par_id));
 		}
 

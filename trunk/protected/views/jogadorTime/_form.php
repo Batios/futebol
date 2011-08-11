@@ -11,13 +11,21 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'jog_id'); ?>
-		<?php echo $form->textField($model,'jog_id'); ?>
+		<?php echo $form->listbox(
+                        $model,
+                        'jog_id',
+                        CHtml::listData(Pessoas::model()->findAll(), 'pes_id', 'pes_nome'),
+                        array('size'=>1, 'prompt'=>'Selecione uma pessoa')); ?>
 		<?php echo $form->error($model,'jog_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'tim_id'); ?>
-		<?php echo $form->textField($model,'tim_id'); ?>
+		<?php echo $form->listbox(
+                        $model,
+                        'tim_id',
+                        CHtml::listData(Times::model()->findAll(), 'tim_id', 'descricao_time'),
+                        array('size'=>1, 'prompt'=>'Selecione um time')); ?>
 		<?php echo $form->error($model,'tim_id'); ?>
 	</div>
 

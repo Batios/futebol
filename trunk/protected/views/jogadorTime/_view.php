@@ -5,11 +5,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('jog_id')); ?>:</b>
-	<?php echo CHtml::encode($data->jog_id); ?>
+	<?php echo CHtml::encode($data->jog->getNome_jogador()); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('tim_id')); ?>:</b>
-	<?php echo CHtml::encode($data->tim_id); ?>
+	<?php echo CHtml::encode($data->tim->descricao_time); ?>
 	<br />
 
 

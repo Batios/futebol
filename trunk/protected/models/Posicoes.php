@@ -37,6 +37,7 @@ class Posicoes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('pos_descricao', 'required'),
 			array('pos_descricao', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

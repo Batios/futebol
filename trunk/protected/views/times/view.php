@@ -19,8 +19,8 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'tim_id',
+		'par.descricao_partida',
 		'tim_nome',
-		'col_id',
-		'par_id',
+		'col.col_descricao',
 	),
 )); ?>

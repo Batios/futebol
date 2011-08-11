@@ -12,5 +12,13 @@
 	<?php echo CHtml::encode($data->par_data_cadastro); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('par_descricao')); ?>:</b>
+	<?php echo CHtml::encode($data->par_descricao); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('par_data_alteracao')); ?>:</b>
+	<?php echo CHtml::encode($data->par_data_alteracao); ?>
+	<br />
+
 
 </div>

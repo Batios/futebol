@@ -16,9 +16,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'par_data_cadastro'); ?>
-		<?php echo $form->textField($model,'par_data_cadastro'); ?>
-		<?php echo $form->error($model,'par_data_cadastro'); ?>
+		<?php echo $form->labelEx($model,'par_descricao'); ?>
+		<?php echo $form->textField($model,'par_descricao',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'par_descricao'); ?>
 	</div>
 
 	<div class="row buttons">
@@ -28,3 +28,18 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+
+	$(function() {
+
+            $.datepicker.setDefaults($.datepicker.regional[ "pt-BR" ])
+
+            $( "#Partidas_par_data_partida" ).datepicker({
+                    showOn: "button",
+                    buttonImage: "images/calendar.gif",
+                    buttonImageOnly: true
+            });
+	});
+
+</script>

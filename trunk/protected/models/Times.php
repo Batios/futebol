@@ -16,6 +16,7 @@
  */
 class Times extends CActiveRecord
 {
+    private $descricao_time;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Times the static model class
@@ -41,6 +42,7 @@ class Times extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('tim_nome, col_id, par_id', 'required'),
 			array('col_id, par_id', 'numerical', 'integerOnly'=>true),
 			array('tim_nome', 'length', 'max'=>30),
 			// The following rule is used by search().
@@ -48,6 +50,11 @@ class Times extends CActiveRecord
 			array('tim_id, tim_nome, col_id, par_id', 'safe', 'on'=>'search'),
 		);
 	}
+
+        public function  afterFind() {
+            parent::afterFind();
+            $this->setDescricao_time($this->tim_nome.' ['.$this->par->getDescricao_partida().']');
+        }
 
 	/**
 	 * @return array relational rules.
@@ -69,10 +76,10 @@ class Times extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'tim_id' => 'Tim',
-			'tim_nome' => 'Tim Nome',
-			'col_id' => 'Col',
-			'par_id' => 'Par',
+			'tim_id' => 'Id Time',
+			'tim_nome' => 'Nome do time',
+			'col_id' => 'Colete',
+			'par_id' => 'Partida',
 		);
 	}
 
@@ -96,4 +103,14 @@ class Times extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+        public function getDescricao_time() {
+            return $this->descricao_time;
+        }
+
+        public function setDescricao_time($descricao_time) {
+            $this->descricao_time = $descricao_time;
+        }
+
+
 }
