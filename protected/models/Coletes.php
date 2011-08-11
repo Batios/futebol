@@ -62,8 +62,8 @@ class Coletes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'col_id' => 'Col',
-			'col_descricao' => 'Col Descricao',
+			'col_id' => 'Id',
+			'col_descricao' => 'Cor do Colete',
 		);
 	}
 

@@ -62,8 +62,8 @@ class Posicoes extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'pos_id' => 'Pos',
-			'pos_descricao' => 'Pos Descricao',
+			'pos_id' => 'Id Posição',
+			'pos_descricao' => 'Posição Descrição',
 		);
 	}
 

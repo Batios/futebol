@@ -89,13 +89,15 @@ class Jogadores extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'jog_id' => 'Jog',
-			'jog_nome_colete' => 'Jog Nome Colete',
-			'tim_bra_id' => 'Tim Bra',
-			'jog_linha' => 'Jog Linha',
-			'jog_gol' => 'Jog Gol',
-			'tip_jog_id' => 'Tip Jog',
-			'pos_id' => 'Pos',
+			'jog_id' => 'Id',
+			'jog_nome_colete' => 'Nome no Colete',
+			'tim_bra_id' => 'Time',
+			'jog_linha' => 'É Linha',
+			'jog_gol' => 'É Goleiro',
+			'tip_jog_id' => 'Tipo Jogador',
+			'pos_id' => 'Posição',
+			'jog_linha_descricao' => 'É Linha',
+			'jog_gol_descricao' => 'É Goleiro',
 		);
 	}
 
