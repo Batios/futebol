@@ -50,7 +50,7 @@ return array(
 		),*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'pgsql:host=localhost;dbname=mp_db;port=5433;',
+			'connectionString' => 'pgsql:host=localhost;dbname=futebol;port=5433;',
 			'emulatePrepare' => true,
 			'username' => 'postgres',
 			'password' => '123456',
