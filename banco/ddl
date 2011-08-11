@@ -1,0 +1,122 @@
+CREATE DATABASE futebol
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'pt_BR.utf8'
+       LC_CTYPE = 'pt_BR.utf8'
+       CONNECTION LIMIT = -1;
+
+
+CREATE TABLE pessoas
+(
+  pes_id serial NOT NULL,
+  pes_nome character varying(100),
+  pes_apelido character varying(20),
+  pes_data_nascimento date,
+  pes_data_cadastro time with time zone,
+  CONSTRAINT pes_pk PRIMARY KEY (pes_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE pessoas OWNER TO postgres;
+
+
+CREATE TABLE jogadores
+(
+  jog_id integer NOT NULL,
+  jog_tipo integer,
+  jog_nome_colete character varying(30),
+  tim_bra_id integer,
+  CONSTRAINT jogadores_pkey PRIMARY KEY (jog_id),
+  CONSTRAINT jogadores_fk FOREIGN KEY (jog_id)
+      REFERENCES pessoas (pes_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE jogadores OWNER TO postgres;
+
+
+CREATE TABLE coletes
+(
+  col_id serial NOT NULL,
+  col_descricao character varying(30),
+  CONSTRAINT coletes_pkey PRIMARY KEY (col_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE coletes OWNER TO postgres;
+
+
+CREATE TABLE times
+(
+  tim_id serial NOT NULL,
+  tim_nome character varying(30),
+  col_id integer,
+  par_id integer,
+  CONSTRAINT times_pkey PRIMARY KEY (tim_id),
+  CONSTRAINT times_fk_colete FOREIGN KEY (col_id)
+      REFERENCES coletes (col_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT times_pk_partida FOREIGN KEY (par_id)
+      REFERENCES partidas (par_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE times OWNER TO postgres;
+
+
+
+CREATE TABLE partidas
+(
+  par_id serial NOT NULL,
+  par_data_partida date NOT NULL,
+  par_data_cadastro date NOT NULL,
+  CONSTRAINT partidas_pkey PRIMARY KEY (par_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE partidas OWNER TO postgres;
+
+
+CREATE TABLE jogador_time
+(
+  jog_tim_id serial NOT NULL,
+  jog_id integer NOT NULL,
+  tim_id integer NOT NULL,
+  CONSTRAINT jogador_time_pkey PRIMARY KEY (jog_tim_id),
+  CONSTRAINT jogador_time_fk_jogador FOREIGN KEY (jog_id)
+      REFERENCES jogadores (jog_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT jogador_time_fk_time FOREIGN KEY (tim_id)
+      REFERENCES times (tim_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE jogador_time OWNER TO postgres;
+
+
+CREATE TABLE gols
+(
+  gol_id serial NOT NULL,
+  jog_tim_id integer NOT NULL,
+  gol_data_ocorrencia time without time zone NOT NULL,
+  gol_data_cadastro time without time zone NOT NULL,
+  CONSTRAINT gols_pkey PRIMARY KEY (gol_id),
+  CONSTRAINT gols_fk_jogador_time FOREIGN KEY (jog_tim_id)
+      REFERENCES jogador_time (jog_tim_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE gols OWNER TO postgres;
+
