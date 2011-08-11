@@ -21,5 +21,7 @@ $this->menu=array(
 		'par_id',
 		'par_data_partida',
 		'par_data_cadastro',
+		'par_descricao',
+		'par_data_alteracao',
 	),
 )); ?>

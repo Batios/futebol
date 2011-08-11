@@ -1,7 +1,7 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('jog_id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->jog->pes_nome), array('view', 'id'=>$data->jog_id)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->nome_jogador), array('view', 'id'=>$data->jog_id)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('jog_nome_colete')); ?>:</b>

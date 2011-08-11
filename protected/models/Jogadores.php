@@ -23,6 +23,7 @@ class Jogadores extends CActiveRecord
 {
     private $jog_linha_descricao;
     private $jog_gol_descricao;
+    private $nome_jogador;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Jogadores the static model class
@@ -64,6 +65,7 @@ class Jogadores extends CActiveRecord
             parent::afterFind();
             $this->jog_linha_descricao = $this->jog_linha==true ? 'Sim' : 'Não';
             $this->jog_gol_descricao = $this->jog_gol==true ? 'Sim' : 'Não';
+            $this->setNome_jogador($this->jog->pes_nome);
         }
 
 
@@ -139,6 +141,14 @@ class Jogadores extends CActiveRecord
 
         public function setJog_gol_descricao($jog_gol_descricao) {
             $this->jog_gol_descricao = $jog_gol_descricao;
+        }
+
+        public function getNome_jogador() {
+            return $this->nome_jogador;
+        }
+
+        public function setNome_jogador($nome_jogador) {
+            $this->nome_jogador = $nome_jogador;
         }
 
 

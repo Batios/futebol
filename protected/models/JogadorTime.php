@@ -15,6 +15,8 @@
  */
 class JogadorTime extends CActiveRecord
 {
+
+    private $descricao_jogador_time;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return JogadorTime the static model class
@@ -48,6 +50,11 @@ class JogadorTime extends CActiveRecord
 		);
 	}
 
+        public function  afterFind() {
+            parent::afterFind();
+            $this->setDescricao_jogador_time($this->tim->getDescricao_time().' - '.$this->jog->jog->pes_nome);
+        }
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -68,9 +75,9 @@ class JogadorTime extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'jog_tim_id' => 'Jog Tim',
-			'jog_id' => 'Jog',
-			'tim_id' => 'Tim',
+			'jog_tim_id' => 'Id Jogador Time',
+			'jog_id' => 'Jogador',
+			'tim_id' => 'Time',
 		);
 	}
 
@@ -93,4 +100,14 @@ class JogadorTime extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+        public function getDescricao_jogador_time() {
+            return $this->descricao_jogador_time;
+        }
+
+        public function setDescricao_jogador_time($jogador_time) {
+            $this->descricao_jogador_time = $jogador_time;
+        }
+
+
 }

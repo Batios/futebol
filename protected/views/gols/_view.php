@@ -5,7 +5,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('jog_tim_id')); ?>:</b>
-	<?php echo CHtml::encode($data->jog_tim_id); ?>
+	<?php echo CHtml::encode($data->jogTim->descricao_jogador_time); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('gol_data_ocorrencia')); ?>:</b>

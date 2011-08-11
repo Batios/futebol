@@ -45,6 +45,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'par_id',
 		'par_data_partida',
 		'par_data_cadastro',
+		'par_descricao',
+		'par_data_alteracao',
 		array(
 			'class'=>'CButtonColumn',
 		),

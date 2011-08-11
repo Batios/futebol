@@ -18,7 +18,7 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'jog.pes_nome',
+		'nome_jogador',
 		'jog_nome_colete',
 		'timBra.tim_bra_nome',
 		'jog_linha_descricao',

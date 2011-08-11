@@ -93,7 +93,7 @@ class GolsController extends Controller
 		if(isset($_POST['Gols']))
 		{
 			$model->attributes=$_POST['Gols'];
-			if($model->save())
+			if($model->save(true, array('jog_tim_id','gol_data_ocorrencia', 'gol_id')))
 				$this->redirect(array('view','id'=>$model->gol_id));
 		}
 

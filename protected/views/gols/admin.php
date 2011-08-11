@@ -43,7 +43,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'gol_id',
-		'jog_tim_id',
+		'jogTim.descricao_jogador_time',
 		'gol_data_ocorrencia',
 		'gol_data_cadastro',
 		array(

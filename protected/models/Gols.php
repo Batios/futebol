@@ -39,13 +39,29 @@ class Gols extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('jog_tim_id, gol_data_ocorrencia, gol_data_cadastro', 'required'),
+			array('jog_tim_id, gol_data_ocorrencia', 'required'),
 			array('jog_tim_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('gol_id, jog_tim_id, gol_data_ocorrencia, gol_data_cadastro', 'safe', 'on'=>'search'),
 		);
 	}
+
+
+        public function  beforeSave() {
+            parent::beforeSave();
+            if($this->isNewRecord){
+                $this->gol_data_cadastro = new CDbExpression('NOW()');
+            }
+            return $this;
+        }
+
+        public function  afterFind() {
+            parent::afterFind();
+            $date = new CDateFormatter('pt_br');
+            $this->gol_data_ocorrencia =  $date->format('dd/MM/yyyy',$this->gol_data_ocorrencia);
+            $this->gol_data_cadastro =  $date->format('dd/MM/yyyy - HH:mm:s',$this->gol_data_cadastro);
+        }
 
 	/**
 	 * @return array relational rules.
@@ -65,10 +81,10 @@ class Gols extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'gol_id' => 'Gol',
-			'jog_tim_id' => 'Jog Tim',
-			'gol_data_ocorrencia' => 'Gol Data Ocorrencia',
-			'gol_data_cadastro' => 'Gol Data Cadastro',
+			'gol_id' => 'Id Gol',
+			'jog_tim_id' => 'Jogador do Time',
+			'gol_data_ocorrencia' => 'Data Ocorrência',
+			'gol_data_cadastro' => 'Data Cadastro',
 		);
 	}
 

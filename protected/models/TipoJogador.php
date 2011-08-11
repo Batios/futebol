@@ -37,6 +37,7 @@ class TipoJogador extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('tip_jog_descricao', 'required'),
 			array('tip_jog_descricao', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

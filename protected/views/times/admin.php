@@ -44,8 +44,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'tim_id',
 		'tim_nome',
-		'col_id',
-		'par_id',
+		'col.col_descricao',
+		'par.descricao_partida',
 		array(
 			'class'=>'CButtonColumn',
 		),
