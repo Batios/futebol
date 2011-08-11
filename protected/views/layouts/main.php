@@ -32,7 +32,14 @@
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                                array('label'=>'Pessoa', 'url'=>array('/pessoas'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Jogador', 'url'=>array('/jogadores'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Partida', 'url'=>array('/partidas'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Time', 'url'=>array('/times'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Colete', 'url'=>array('/coletes'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Jogador Time', 'url'=>array('/jogadorTime'), 'visible'=>!Yii::app()->user->isGuest),
+                                array('label'=>'Gols', 'url'=>array('/gols'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 			),
 		)); ?>
 	</div><!-- mainmenu -->
