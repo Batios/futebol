@@ -1,0 +1,12 @@
+2011/08/10 22:55:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "g".' in /var/www/yii-1.1.8.r3324/framework/web/CWebApplication.php:281
+Stack trace:
+#0 /var/www/yii-1.1.8.r3324/framework/web/CWebApplication.php(136): CWebApplication->runController('g')
+#1 /var/www/yii-1.1.8.r3324/framework/base/CApplication.php(158): CWebApplication->processRequest()
+#2 /var/www/futebol/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/futebol/index.php?r=g
+2011/08/10 22:55:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /var/www/yii-1.1.8.r3324/framework/web/CWebApplication.php:281
+Stack trace:
+#0 /var/www/yii-1.1.8.r3324/framework/web/CWebApplication.php(136): CWebApplication->runController('gii')
+#1 /var/www/yii-1.1.8.r3324/framework/base/CApplication.php(158): CWebApplication->processRequest()
+#2 /var/www/futebol/index.php(13): CApplication->run()
+#3 {main} REQUEST_URI=/futebol/index.php?r=gii
