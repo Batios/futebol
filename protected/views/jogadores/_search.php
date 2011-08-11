@@ -11,11 +11,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'jog_tipo'); ?>
-		<?php echo $form->textField($model,'jog_tipo'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'jog_nome_colete'); ?>
 		<?php echo $form->textField($model,'jog_nome_colete',array('size'=>30,'maxlength'=>30)); ?>
 	</div>
@@ -23,6 +18,26 @@
 	<div class="row">
 		<?php echo $form->label($model,'tim_bra_id'); ?>
 		<?php echo $form->textField($model,'tim_bra_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'jog_linha'); ?>
+		<?php echo $form->checkBox($model,'jog_linha'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'jog_gol'); ?>
+		<?php echo $form->checkBox($model,'jog_gol'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'tip_jog_id'); ?>
+		<?php echo $form->textField($model,'tip_jog_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'pos_id'); ?>
+		<?php echo $form->textField($model,'pos_id'); ?>
 	</div>
 
 	<div class="row buttons">

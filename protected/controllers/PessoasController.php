@@ -93,7 +93,7 @@ class PessoasController extends Controller
 		if(isset($_POST['Pessoas']))
 		{
 			$model->attributes=$_POST['Pessoas'];
-			if($model->save())
+			if($model->save(true, array('pes_nome', 'pes_apelido', 'pes_data_nascimento')))
 				$this->redirect(array('view','id'=>$model->pes_id));
 		}
 
